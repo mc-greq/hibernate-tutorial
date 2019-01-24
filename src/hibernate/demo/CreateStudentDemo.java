@@ -19,15 +19,20 @@ public class CreateStudentDemo {
         Session session = factory.getCurrentSession();
 
         try{
-            // use the session object to save Java object
-
             // create the student object
+            System.out.println("Creating new student object");
+            Student student = new Student("Grzegorz", "Rutkowski", "gr@gmail.com");
 
             // start a transaction
+            session.beginTransaction();
 
             // save the student object
+            System.out.println("Saving the student...");
+            session.save(student);
 
             // commit transaction
+            session.getTransaction().commit();
+            System.out.println("Transaction committed!");
 
         } finally {
             factory.close();
