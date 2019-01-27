@@ -61,7 +61,6 @@ public class QueryStudentDemo {
             // commit transaction
             session.getTransaction().commit();
             System.out.println("Done!");
-
         }
 
     }
