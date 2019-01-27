@@ -25,7 +25,8 @@ public class QueryStudentDemo {
             session.beginTransaction();
 
             // query the students
-            List<Student> studentsList = session.createQuery("from Student", Student.class)
+            List<Student> studentsList = session
+                    .createQuery("from Student", Student.class)
                     .getResultList();
 
             // display the students
@@ -34,14 +35,25 @@ public class QueryStudentDemo {
 
             // query students by last name
             System.out.println("\nStudents queried by lastName:");
-            studentsList = session.createQuery("from Student s where s.lastName='Rutkowski'", Student.class)
+            studentsList = session
+                    .createQuery("from Student s where s.lastName='Rutkowski'", Student.class)
                     .getResultList();
 
             // display query results
             studentsList.forEach(System.out::println);
 
+            // query students by part of email
             System.out.println("\nStudents queried by email:");
-            studentsList = session.createQuery("from Student s where s.email like '%mail.com'", Student.class)
+            studentsList = session
+                    .createQuery("from Student s where s.email like '%mail.com'", Student.class)
+                    .getResultList();
+
+            studentsList.forEach(System.out::println);
+
+            // query with OR
+            System.out.println("\nStudents with last name Rutkowski OR Florczak");
+            studentsList = session
+                    .createQuery("from Student s where s.lastName='Rutkowski' or s.lastName='Florczak'", Student.class)
                     .getResultList();
 
             studentsList.forEach(System.out::println);
