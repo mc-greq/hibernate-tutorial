@@ -1,5 +1,6 @@
-package hibernate.demo.entity;
+package hibernate.demo;
 
+import hibernate.demo.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
