@@ -16,9 +16,9 @@ public class CreateStudentDemo {
                 .buildSessionFactory();
 
         // create session
-        Session session = factory.getCurrentSession();
 
-        try{
+        try (factory) {
+            Session session = factory.getCurrentSession();
             // create the student object
             System.out.println("Creating new student object");
             Student student = new Student("Grzegorz", "Rutkowski", "gr@gmail.com");
@@ -34,8 +34,6 @@ public class CreateStudentDemo {
             session.getTransaction().commit();
             System.out.println("Transaction committed!");
 
-        } finally {
-            factory.close();
         }
 
     }
